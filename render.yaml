@@ -1,0 +1,40 @@
+# render.yaml - Blueprint for deploying Open Loyalty
+services:
+  # 1. The main PHP/Symfony backend application
+  - type: web
+    name: open-loyalty-backend
+    # Set this to your Git repository URL
+    repo: https://github.com/your-username/your-repo
+    # The build logic is now in a separate script for clarity and caching
+    buildCommand: ./build.sh
+    # The command to start the server after the build is complete
+    startCommand: apache2-foreground
+    envVars:
+      - key: APP_ENV
+        value: production # Set to 'production' for live environments
+      - key: SYMFONY_DEBUG
+        value: 0          # Set to '0' for live environments
+      # These connection strings are automatically injected by Render
+      - key: DATABASE_URL
+        fromService:
+          type: psql
+          name: open-loyalty-db
+          property: connectionString
+      - key: ELASTICSEARCH_URL # Your app needs to use this variable
+        fromService:
+          type: pserv
+          name: elasticsearch
+          property: hostport
+      - key: REDIS_URL # Your app needs to use this variable
+        fromService:
+          type: redis
+          name: open-loyalty-redis
+          property: connectionString
+    # Use a persistent disk for cache and logs so they survive deploys
+    disks:
+      - name: backend-cache
+        mountPath: /var/www/ol/backend/var/cache
+      - name: backend-logs
+        mountPath: /var/www/ol/backend/var/logs
+
+  # 2. Elasticsearch as
