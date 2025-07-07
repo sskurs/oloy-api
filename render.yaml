@@ -31,10 +31,5 @@ services:
           name: open-loyalty-redis
           property: connectionString
     # Use a persistent disk for cache and logs so they survive deploys
-    disks:
-      - name: backend-cache
-        mountPath: /var/www/ol/backend/var/cache
-      - name: backend-logs
-        mountPath: /var/www/ol/backend/var/logs
 
   # 2. Elasticsearch as
