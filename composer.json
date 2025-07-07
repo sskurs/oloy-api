@@ -1,0 +1,80 @@
+{
+    "name": "open-loyalty/open-loyalty",
+    "license": "proprietary",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        },
+        "classmap": [
+            "app/AppKernel.php",
+            "app/AppCache.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.4",
+        "symfony/symfony": "^4.4",
+        "doctrine/dbal": "^2.13.9",
+        "doctrine/orm": "^2.7",
+        "doctrine/doctrine-bundle": "^2.0",
+        "doctrine/doctrine-cache-bundle": "^1.4",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/polyfill-apcu": "^1.0",
+        "sensio/framework-extra-bundle": "^5.0",
+        "incenteev/composer-parameter-handler": "^2.1",
+        "broadway/broadway": "^1.0",
+        "friendsofsymfony/rest-bundle": "^3.0",
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "nelmio/api-doc-bundle": "^3.0",
+        "jms-serializer/serializer-bundle": "^3.0",
+        "nelmio/cors-bundle": "^2.0",
+        "elasticsearch/elasticsearch": "^7.0",
+        "symfony/mailer": "^4.4",
+        "ocramius/proxy-manager": "^2.0",
+        "fakerphp/faker": "^1.0",
+        "pixers/salesmanago-api": "1.1.1",
+        "knplabs/knp-gaufrette-bundle": "^0.5.0",
+        "beberlei/doctrineextensions": "^1.0",
+        "symfony/maker-bundle": "^1.0",
+        "firebase/php-jwt": "^6.10",
+        "ramsey/uuid-doctrine": "^2.0"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^5.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+        ]
+    },
+    "config": {
+        "platform": {
+            "php": "7.4"
+        },
+        "bin-dir": "var/bin",
+        "allow-plugins": {
+            "ocramius/package-versions": true
+        }
+    },
+     
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web",
+        "symfony-tests-dir": "tests",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        }
+    }
+}

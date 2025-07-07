@@ -1,0 +1,8 @@
+services:
+  oloy.swiftmailer:
+    class: OpenLoyalty\Bundle\EmailBundle\Mailer\OloySymfonyMailer
+    arguments: ['@templating', '@mailer.mailer']
+  oloy.mailer:
+    class: OpenLoyalty\Bundle\EmailBundle\Mailer\MockOloyMailer
+  oloy.email.message_factory:
+    class: OpenLoyalty\Bundle\EmailBundle\Service\MessageFactory
